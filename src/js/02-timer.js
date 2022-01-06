@@ -47,12 +47,15 @@ function startCount() {
     let timeLeft = time - newTime;
 
     const result = convertMs(timeLeft);
-    console.log(result);
 
-    refs.days.textContent = addLeadingZero(result.days);
-    refs.hours.textContent = addLeadingZero(result.hours);
-    refs.minutes.textContent = addLeadingZero(result.minutes);
-    refs.seconds.textContent = addLeadingZero(result.seconds);
+    if (newTime > time) {
+      clearInterval(timerId);
+    } else {
+      refs.days.textContent = addLeadingZero(result.days);
+      refs.hours.textContent = addLeadingZero(result.hours);
+      refs.minutes.textContent = addLeadingZero(result.minutes);
+      refs.seconds.textContent = addLeadingZero(result.seconds);
+    }
   }, 1000);
 }
 
